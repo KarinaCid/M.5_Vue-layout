@@ -1,60 +1,70 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="" light >
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+        <v-toolbar-title>Mi App</v-toolbar-title>
       </div>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-btn flat elevation="0">Inicio</v-btn>
+      <v-btn flat elevation="0">Buscar</v-btn>
+      <v-btn flat elevation="0">Acerca de</v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <v-row>
+        <v-col md="4" v-for="(personaje, index) in personajes" :key="index">
+          <v-card class="mx-auto" max-width="400">
+            <v-img class="white--text align-end" :src="personaje.imagen">
+            </v-img>
+            <v-card-text>{{ personaje.nombre }}</v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+//import HelloWorld from "./components/HelloWorld";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    HelloWorld,
+    //
   },
 
   data: () => ({
-    //
+    personajes: [
+      {
+        id: 1,
+        nombre: "Morty",
+        imagen: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+      },
+      {
+        id: 2,
+        nombre: "Rick",
+        imagen: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+      },
+      {
+        id: 3,
+        nombre: "Summer",
+        imagen: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+      },
+      {
+        id: 4,
+        nombre: "Beth",
+        imagen: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+      },
+      {
+        id: 5,
+        nombre: "Jerry",
+        imagen: "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
+      },
+    ],
   }),
 };
 </script>
